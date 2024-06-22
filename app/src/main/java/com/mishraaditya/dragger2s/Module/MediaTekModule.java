@@ -8,6 +8,8 @@ import dagger.Module;
 
 @Module
 public abstract class MediaTekModule {
+
     @Binds
-    abstract public Processor getProcessor(MediaTek mediaTek);
+    abstract Processor getPrccessor(MediaTek mediaTek);
+
 }

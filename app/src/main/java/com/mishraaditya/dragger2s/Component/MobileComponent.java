@@ -6,6 +6,9 @@ import com.mishraaditya.dragger2s.Module.BatteryModule;
 import com.mishraaditya.dragger2s.Module.MediaTekModule;
 import com.mishraaditya.dragger2s.Module.QualcommModule;
 
+import javax.inject.Named;
+
+import dagger.BindsInstance;
 import dagger.Component;
 import dagger.Module;
 
@@ -14,4 +17,18 @@ public interface MobileComponent {
 
     Mobile getMobile();
     void Inject(MainActivity activity);
+    @Component.Builder
+    interface Builder{
+
+        @BindsInstance
+        Builder setClockSpeed(@Named("clockSpeed") int clockSpeed);
+
+        @BindsInstance
+        Builder setCore(@Named("core") int core);
+
+        MobileComponent build();
+    }
+
+
+
 }
