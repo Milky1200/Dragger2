@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        MobileComponent component= DaggerMobileComponent.builder().setCore(8).setClockSpeed(22).build();
+        MobileComponent component= DaggerMobileComponent.factory().create(22,9,32);
         component.Inject(MainActivity.this);
         //mobile=component.getMobile();
         mobile.run();

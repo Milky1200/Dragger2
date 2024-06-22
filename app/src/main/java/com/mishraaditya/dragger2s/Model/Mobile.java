@@ -8,12 +8,14 @@ public class Mobile {
     //@Inject
     //Battery battery;//2nd
     private Processor processor;
+    private Camera camera;
     private Battery battery;
 
     @Inject
-    public Mobile(Battery battery,Processor processor) {//1st
+    public Mobile(Battery battery,Processor processor,Camera camera) {//1st
         this.battery = battery;
         this.processor = processor;
+        this.camera=camera;
     }
 
     public void run(){//4th
