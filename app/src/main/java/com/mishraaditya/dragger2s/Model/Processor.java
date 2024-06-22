@@ -4,9 +4,6 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
-public class Processor {
-    @Inject
-    public Processor() {
-        Log.d("MyMob","Processor Created");
-    }
+public interface Processor {
+    void Start();
 }

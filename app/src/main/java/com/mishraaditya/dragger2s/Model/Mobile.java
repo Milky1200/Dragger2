@@ -17,6 +17,7 @@ public class Mobile {
     }
 
     public void run(){//4th
+        processor.Start();
         Log.d("MyMob","run Created");
     }
 
