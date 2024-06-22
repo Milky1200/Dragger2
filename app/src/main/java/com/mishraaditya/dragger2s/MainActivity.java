@@ -20,6 +20,7 @@ import javax.inject.Inject;
 public class MainActivity extends AppCompatActivity {
     @Inject
     Mobile mobile;
+    Mobile mobile2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
         });
         MobileComponent component= DaggerMobileComponent.factory().create(22,9,32);
         component.Inject(MainActivity.this);
-        //mobile=component.getMobile();
+        mobile=component.getMobile();
+        mobile2=component.getMobile();
         mobile.run();
+        mobile2.run();
 
     }
 

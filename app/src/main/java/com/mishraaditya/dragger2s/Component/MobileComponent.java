@@ -8,11 +8,13 @@ import com.mishraaditya.dragger2s.Module.MediaTekModule;
 import com.mishraaditya.dragger2s.Module.QualcommModule;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.Module;
 
+@Singleton
 @Component(modules = {BatteryModule.class, MediaTekModule.class, CameraModule.class})
 public interface MobileComponent {
 
