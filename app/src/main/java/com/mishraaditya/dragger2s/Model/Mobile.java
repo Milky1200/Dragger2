@@ -16,7 +16,7 @@ public class Mobile {
         this.battery = battery;
         this.processor = processor;
         this.camera=camera;
-        Log.d("MyMob", "Mobile: Created "+processor.toString()+" -- " +battery.toString() + this.toString());
+        Log.d("MyMobs", "Mobile: Created "+processor.toString()+" -- " +battery.toString() + this.toString());
     }
 
     public void run(){//4th

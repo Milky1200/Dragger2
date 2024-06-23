@@ -18,9 +18,11 @@ import com.mishraaditya.dragger2s.Model.Processor;
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
-    @Inject
+   // @Inject
     Mobile mobile;
     Mobile mobile2;
+    Mobile mobile3;
+    Mobile mobile4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        MobileComponent component= DaggerMobileComponent.factory().create(22,9,32);
-        component.Inject(MainActivity.this);
-        mobile=component.getMobile();
-        mobile2=component.getMobile();
+        MobileComponent component1= DaggerMobileComponent.factory().create(22,9,32);
+        MobileComponent component2= DaggerMobileComponent.factory().create(22,9,32);
+        mobile=component1.getMobile();
+        mobile2=component1.getMobile();
+        mobile3=component2.getMobile();
+        mobile4=component2.getMobile();
         mobile.run();
         mobile2.run();
 
