@@ -3,6 +3,7 @@ package com.mishraaditya.dragger2s.Module;
 import com.mishraaditya.dragger2s.Model.Battery;
 import com.mishraaditya.dragger2s.Model.Cobalt;
 import com.mishraaditya.dragger2s.Model.Lithium;
+import com.mishraaditya.dragger2s.Scope.ActivityScope;
 
 import javax.inject.Singleton;
 
@@ -23,7 +24,7 @@ public class BatteryModule {
         return lithium;
     }
 
-    @Singleton
+    @ActivityScope
     @Provides
     static Battery getBattery(Lithium lithium,Cobalt cobalt){
         return new Battery(lithium,cobalt);

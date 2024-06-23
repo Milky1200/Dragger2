@@ -1,28 +1,32 @@
 package com.mishraaditya.dragger2s;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.mishraaditya.dragger2s.Component.DaggerMobileComponent;
-import com.mishraaditya.dragger2s.Component.MobileComponent;
+import com.mishraaditya.dragger2s.Component.ActivityComponent;
+import com.mishraaditya.dragger2s.Component.ApplicationComponent;
+import com.mishraaditya.dragger2s.Component.DaggerActivityComponent;
 import com.mishraaditya.dragger2s.Model.Battery;
+import com.mishraaditya.dragger2s.Model.Camera;
 import com.mishraaditya.dragger2s.Model.Mobile;
-import com.mishraaditya.dragger2s.Model.Mobile_Factory;
-import com.mishraaditya.dragger2s.Model.Processor;
-
-import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
    // @Inject
-    Mobile mobile;
-    Mobile mobile2;
-    Mobile mobile3;
-    Mobile mobile4;
+    ActivityComponent component;
+
+
+    Battery battery1,battery2;
+    Camera camera1,camera2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +39,35 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        component= DaggerActivityComponent.builder().build();
 
-        MainApplication application=(MainApplication)getApplication();
-        MobileComponent component=application.getComponent();
+        battery1=component.getBattery();
+        battery2=component.getBattery();
 
-        mobile=component.getMobile();
-        mobile4=component.getMobile();
-        mobile2=component.getMobile();
-        mobile3=component.getMobile();
+        ApplicationComponent applicationComponent=((MainApplication)getApplication()).getApplicationComponent();
+        camera1=applicationComponent.getCamera();
+        camera2=applicationComponent.getCamera();
 
-        mobile.run();
-        mobile2.run();
-        mobile3.run();
-        mobile4.run();
+        Log.i("Hashed", "================Activity:============ ");
+        Log.i("Hashed", "Activity: "+battery1);
+        Log.i("Hashed", "Activity: "+battery2);
+
+        Log.i("Hashed", "Activity: "+camera1);
+        Log.i("Hashed", "Activity: "+camera2);
+        replace(new MainFragment());
 
     }
 
 
+    void replace(Fragment fragment){
+        FragmentManager fm=getSupportFragmentManager();
+        FragmentTransaction ft= fm.beginTransaction();
+        ft.replace(R.id.fragmentContainer, fragment);
+        ft.commit();
+    }
 
+    public ActivityComponent getActivityComponent() {
+        return component;
+    }
 
 }
