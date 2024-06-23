@@ -34,14 +34,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        MobileComponent component1= DaggerMobileComponent.factory().create(22,9,32);
-        MobileComponent component2= DaggerMobileComponent.factory().create(22,9,32);
-        mobile=component1.getMobile();
-        mobile2=component1.getMobile();
-        mobile3=component2.getMobile();
-        mobile4=component2.getMobile();
+
+
+        MainApplication application=(MainApplication)getApplication();
+        MobileComponent component=application.getComponent();
+
+        mobile=component.getMobile();
+        mobile4=component.getMobile();
+        mobile2=component.getMobile();
+        mobile3=component.getMobile();
+
         mobile.run();
         mobile2.run();
+        mobile3.run();
+        mobile4.run();
 
     }
 
